@@ -1,0 +1,26 @@
+import plagas.*
+import elementos.*
+
+describe "test 1" {
+
+	var garrapata1 = new Garrapatas()
+	var mascota1 = new Mascota()
+
+	fixture {
+		garrapata1.poblacion(50)
+		mascota1.nivelDeSalud(260)
+		garrapata1.nivelDeDanio()
+		garrapata1.transmitenEnfermedades()
+	}
+
+	test "garrapata ataque" {
+		garrapata1.ataqueA(mascota1)
+		assert.equals(60, garrapata1.poblacion())
+		assert.equals(210, mascota1.nivelDeSalud())
+		garrapata1.nivelDeDanio()
+		garrapata1.ataqueA(mascota1)
+		assert.equals(150, mascota1.nivelDeSalud())
+	}
+
+}
+
